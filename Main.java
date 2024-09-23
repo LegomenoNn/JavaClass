@@ -1,20 +1,22 @@
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner= new Scanner(System.in);
-        String s1=scanner.nextLine();
-        int max_count=0;
+        Scanner input = new Scanner(System.in);
+        String line = input.nextLine();
+        String []arrayLine = line.split(" ");
         int count=0;
-        for(int i=0;i<s1.length();i++){
-            count++;
-            if(i==s1.length()-1) {
-                break;
-            }
-            if(s1.charAt(i+1)<s1.charAt(i)) {
-                max_count = (count > max_count) ? count : max_count;
-                count = 0;
-            }
+        String newLine = "";
+        for(String item:arrayLine) {
+              if(item.charAt(0)=='A' || item.charAt(0)=='a'){
+                  newLine+='a'+item.substring(1)+' ';
+                  count++;
+              }
+              else{
+                  newLine+=item;
+              }
         }
-        System.out.println("Длина самой длинной возрастающей подпоследовательности: "+max_count);
+        System.out.println(newLine);
+        System.out.println("Количество слов, начинающихся на а: "+count);
     }
 }
